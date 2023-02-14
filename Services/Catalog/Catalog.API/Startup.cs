@@ -25,7 +25,6 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        //services.AddControllers();
         services.AddApiVersioning();
         services.AddHealthChecks()
             .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "Catalog  Mongo Db Health Check",
