@@ -55,6 +55,10 @@ public class Startup
                 options.Authority = "https://localhost:9009";
                 options.Audience = "Catalog";
             });
+    services.AddAuthorization(options =>
+    {
+        options.AddPolicy("CanRead", policy=>policy.RequireClaim("scope", "catalogapi.read"));
+    });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

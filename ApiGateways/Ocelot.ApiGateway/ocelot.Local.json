@@ -76,7 +76,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/v1/Catalog/GetAllTypes",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "catalog.api",
@@ -89,11 +89,11 @@
     //Basket API
     {
       "DownstreamPathTemplate": "/api/v1/Basket/{userName}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basket.api",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "9001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userName}",
@@ -101,23 +101,40 @@
     },
     {
       "DownstreamPathTemplate": "/api/v1/Basket",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basket.api",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "9001"
         }
       ],
       "UpstreamPathTemplate": "/Basket",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/v1/Basket/CreateBasket",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "basket.api",
-          "Port": "80"
+          "Host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/CreateBasket",
+      "UpstreamHttpMethod": [
+        "POST"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EShoppingGatewayAuthScheme"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/Checkout",
@@ -170,6 +187,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5010"
+    "BaseUrl": "https://localhost:9010"
   }
 }

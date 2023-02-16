@@ -15,7 +15,7 @@ public class BasketController : ApiController
 {
     private readonly IMediator _mediator;
     private readonly IPublishEndpoint _publishEndpoint;
-
+    
     public BasketController(IMediator mediator, IPublishEndpoint publishEndpoint)
     {
         _mediator = mediator;
@@ -36,6 +36,7 @@ public class BasketController : ApiController
     [ProducesResponseType(typeof(ShoppingCartResponse), (int) HttpStatusCode.OK)]
     public async Task<ActionResult<ShoppingCartResponse>> UpdateBasket([FromBody] CreateShoppingCartCommand createShoppingCartCommand)
     {
+        
         var basket = await _mediator.Send(createShoppingCartCommand);
         return Ok(basket);
     }

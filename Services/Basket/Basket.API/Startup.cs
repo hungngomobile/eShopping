@@ -28,6 +28,14 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddApiVersioning();
+        services.AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", policy =>
+            {
+                //TODO read the same from settings for prod deployment
+                policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+            });
+        });
         //Redis Settings
         services.AddStackExchangeRedisCache(options =>
         {
@@ -83,6 +91,7 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseRouting();
+        app.UseCors("CorsPolicy");
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseEndpoints(endpoints =>
