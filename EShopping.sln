@@ -62,10 +62,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{EE5614B3
 		ApiGateways\nginx\id-local.crt = ApiGateways\nginx\id-local.crt
 		ApiGateways\nginx\id-local.key = ApiGateways\nginx\id-local.key
 		ApiGateways\nginx\id-local.pfx = ApiGateways\nginx\id-local.pfx
-		ApiGateways\nginx\api-local.conf = ApiGateways\nginx\api-local.conf
-		ApiGateways\nginx\api-local.crt = ApiGateways\nginx\api-local.crt
-		ApiGateways\nginx\api-local.key = ApiGateways\nginx\api-local.key
-		ApiGateways\nginx\api-local.pfx = ApiGateways\nginx\api-local.pfx
 	EndProjectSection
 EndProject
 Global
