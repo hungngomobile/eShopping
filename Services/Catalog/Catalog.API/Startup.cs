@@ -8,8 +8,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
@@ -34,12 +32,7 @@ public class Startup
             {
                 policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
             });
-        }).AddVersionedApiExplorer(
-            options =>
-            {
-                options.GroupNameFormat = "'v'VVV";
-                options.SubstituteApiVersionInUrl = true;
-            });
+        });
         services.AddHealthChecks()
             .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "Catalog  Mongo Db Health Check",
                 HealthStatus.Degraded);
@@ -67,8 +60,8 @@ public class Startup
     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.Authority = Configuration.GetValue<string>("AuthN:Authority");
-                options.Audience = Configuration.GetValue<string>("AuthN:ApiName");
+                options.Authority = "https://localhost:9009";
+                options.Audience = "Catalog";
             });
     services.AddAuthorization(options =>
     {
@@ -76,39 +69,15 @@ public class Startup
     });
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        var nginxPath = "/catalog";
-        if (env.IsEnvironment("Local"))
+        if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();  
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
         }
 
-        // if (env.IsDevelopment())
-        // {
-            app.UseDeveloperExceptionPage();
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-            
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                foreach (var description in provider.ApiVersionDescriptions)
-                {
-                    options.SwaggerEndpoint($"{nginxPath}/swagger/{description.GroupName}/swagger.json",
-                        $"Catalog API {description.GroupName.ToUpperInvariant()}");
-                    options.RoutePrefix = string.Empty;
-                }
-            
-                options.DocumentTitle = "Catalog API Documentation";
-            
-            });
-      //  }
-        
         app.UseHttpsRedirection();
         app.UseRouting();
         app.UseCors("CorsPolicy");
