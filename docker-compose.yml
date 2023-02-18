@@ -67,5 +67,4 @@ volumes:
   mongo_data:
   portainer_data:
   postgres_data:
-  pgadmin_data:
-  catalog.api:    
+  pgadmin_data:   
