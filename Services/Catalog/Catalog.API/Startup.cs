@@ -1,4 +1,5 @@
 using System.Reflection;
+using Catalog.API.Extensions;
 using Catalog.Application.Handlers;
 using Catalog.Core.Repositories;
 using Catalog.Infrastructure.Data;
@@ -27,24 +28,27 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddApiVersioning();
-        services.AddCors(options =>
-        {
-            options.AddPolicy("CorsPolicy", policy =>
-            {
-                policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-            });
-        }).AddVersionedApiExplorer(
+        services.AddApiVersioning(options => options.ReportApiVersions = true)
+            .AddVersionedApiExplorer(
             options =>
             {
                 options.GroupNameFormat = "'v'VVV";
                 options.SubstituteApiVersionInUrl = true;
             });
+        services.AddMvcCore()
+            .AddCors(options =>
+        {
+            options.AddPolicy("CorsPolicy", policy =>
+            {
+                policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+            });
+        }).AddApiExplorer();
+        
         services.AddHealthChecks()
             .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "Catalog  Mongo Db Health Check",
                 HealthStatus.Degraded);
-        services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Catalog.API", Version = "v1"}); });
-        
+       // services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Catalog.API", Version = "v1"}); });
+       services.AddSwaggerDocumentation();  
         //DI
         services.AddAutoMapper(typeof(Startup));
         services.AddMediatR(typeof(CreateProductHandler).GetTypeInfo().Assembly);
@@ -79,12 +83,12 @@ public class Startup
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
     {
         var nginxPath = "/catalog";
-        if (env.IsEnvironment("Local"))
-        {
-            app.UseDeveloperExceptionPage();  
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
-        }
+        // if (env.IsEnvironment("Local"))
+        // {
+        //     app.UseDeveloperExceptionPage();  
+        //     app.UseSwagger();
+        //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
+        // }
 
         // if (env.IsDevelopment())
         // {
@@ -93,20 +97,20 @@ public class Startup
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-            
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                foreach (var description in provider.ApiVersionDescriptions)
-                {
-                    options.SwaggerEndpoint($"{nginxPath}/swagger/{description.GroupName}/swagger.json",
-                        $"Catalog API {description.GroupName.ToUpperInvariant()}");
-                    options.RoutePrefix = string.Empty;
-                }
-            
-                options.DocumentTitle = "Catalog API Documentation";
-            
-            });
+            app.UseSwaggerDocumentation(nginxPath, Configuration, provider);
+            // app.UseSwagger();
+            // app.UseSwaggerUI(options =>
+            // {
+            //     foreach (var description in provider.ApiVersionDescriptions)
+            //     {
+            //         options.SwaggerEndpoint($"{nginxPath}/swagger/{description.GroupName}/swagger.json",
+            //             $"Catalog API {description.GroupName.ToUpperInvariant()}");
+            //         options.RoutePrefix = string.Empty;
+            //     }
+            //
+            //     options.DocumentTitle = "Catalog API Documentation";
+            //
+            // });
       //  }
         
         app.UseHttpsRedirection();
