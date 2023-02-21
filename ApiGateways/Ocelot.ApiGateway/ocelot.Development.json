@@ -162,7 +162,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "host.docker.internal",
-          "Port": "9004"
+          "Port": "9003"
         }
       ],
       "UpstreamPathTemplate": "/Order/{userName}",
