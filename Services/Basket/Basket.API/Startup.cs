@@ -13,6 +13,7 @@ using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
@@ -36,6 +37,13 @@ public class Startup
         {
             options.AssumeDefaultVersionWhenUnspecified = true;
             options.DefaultApiVersion = new ApiVersion(1, 0);
+            options.ReportApiVersions = true;
+            //Enable when required
+            // options.ApiVersionReader = ApiVersionReader.Combine(
+            //         new HeaderApiVersionReader("X-Version"),
+            //         new QueryStringApiVersionReader("api-version", "ver"),
+            //         new MediaTypeApiVersionReader("ver")
+            //     );
         });
         services.AddVersionedApiExplorer(options =>
         {
