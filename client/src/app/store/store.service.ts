@@ -24,7 +24,14 @@ export class StoreService {
       params = params.append('typeId', storeParams.typeId);
     }
 
+    if(storeParams.search){
+      params = params.append('search', storeParams.search);
+    }
+
+
     params = params.append('sort', storeParams.sort);
+    params = params.append('pageIndex', storeParams.pageNumber);
+    params = params.append('pageSize', storeParams.pageSize);
 
     return this.http.get<IPagination<IProduct[]>>(this.baseUrl+'Catalog/GetAllProducts', {params});
   }
