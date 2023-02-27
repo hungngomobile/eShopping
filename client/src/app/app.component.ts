@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IPagination } from './shared/models/pagination';
-import { IProduct } from './shared/models/product';
+import { BasketService } from './basket/basket.service';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +8,12 @@ import { IProduct } from './shared/models/product';
 })
 export class AppComponent implements OnInit {
   title = 'eShopping';
-  products: IProduct[] = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private basketService: BasketService){}
   ngOnInit(): void {
-    this.http.get<IPagination<IProduct[]>>('http://localhost:9010/Catalog/GetAllProducts').subscribe({
-      next:response => {
-        this.products = response.data,
-        console.log(response)
-      },
-      error: error=>console.log(error),
-      complete:() =>{
-        console.log('Catalog API call completed');
-      }
-    })
+    const basket_username = localStorage.getItem('basket_username');
+    if(basket_username){
+      this.basketService.getBasket(basket_username);
+    }
   }
 }
