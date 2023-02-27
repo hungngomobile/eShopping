@@ -7,6 +7,7 @@ import { UnAuthenticatedComponent } from './un-authenticated/un-authenticated.co
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { HeaderComponent } from './header/header.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -16,15 +17,18 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
       NotFoundComponent,
       UnAuthenticatedComponent,
       ServerErrorComponent,
-      HeaderComponent],
+      HeaderComponent
+    ],
   imports: [
     CommonModule,
     RouterModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    NgxSpinnerModule
   ],
   exports:[
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    NgxSpinnerModule
   ]
 })
 export class CoreModule { }
