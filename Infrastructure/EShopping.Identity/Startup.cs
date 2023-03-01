@@ -28,6 +28,8 @@ namespace EShopping.Identity
         {
             services.AddControllersWithViews();
 
+            services.AddSession(options => options.Cookie.SameSite = SameSiteMode.None);
+
             var builder = services.AddIdentityServer(options =>
             {
                 options.Events.RaiseErrorEvents = true;

@@ -8,7 +8,7 @@ import { IProduct } from '../shared/models/product';
   providedIn: 'root'
 })
 export class BasketService {
-  baseUrl = 'http://localhost:9010';
+  baseUrl = 'https://localhost:9010';
   constructor(private http: HttpClient) { }
   private basketSource = new BehaviorSubject<Basket | null>(null);
   basketSource$ = this.basketSource.asObservable();

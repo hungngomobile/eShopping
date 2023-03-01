@@ -8,10 +8,10 @@ export class ConfigService {
   constructor() {}
 
   get authApiURI() {
-      return 'http://localhost:9010';
+      return 'https://localhost:9010';
   }
 
   get resourceApiURI() {
-      return 'http://localhost:9010/api';
+      return 'http:s//localhost:9010/api';
   }
 }
