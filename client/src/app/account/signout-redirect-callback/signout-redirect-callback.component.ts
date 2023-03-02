@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
+
 import { AcntService } from '../acnt.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AcntService } from '../acnt.service';
 })
 export class SignoutRedirectCallbackComponent implements OnInit {
 
-  constructor(private _authService: AccountService, private _router: Router, private acntService: AcntService) { }
+  constructor(private _router: Router, private acntService: AcntService) { }
 
   ngOnInit(): void {
 

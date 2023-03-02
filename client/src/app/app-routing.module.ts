@@ -1,6 +1,5 @@
-import { inject, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountService } from './account/account.service';
 import { SigninRedirectCallbackComponent } from './account/signin-redirect-callback/signin-redirect-callback.component';
 import { SignoutRedirectCallbackComponent } from './account/signout-redirect-callback/signout-redirect-callback.component';
 import { AuthGuard } from './core/guards/auth.guard';

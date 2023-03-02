@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { AcntService } from '../acnt.service';
 
 @Component({
@@ -7,16 +6,11 @@ import { AcntService } from '../acnt.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   title = "Login";
-  returnUrl: string;
-  constructor(private activatedRoute: ActivatedRoute, private acntService: AcntService) { }
-  ngOnInit(): void {
-    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/checkout';
-    // this.login();
-  }
 
+  constructor(private acntService: AcntService) { }
 
   login(){
     this.acntService.login();
