@@ -43,8 +43,7 @@ export class AcntService {
   get authorizationHeaderValue(): string {
     console.log(this.token);
     console.log(this.access_token);
-   // return `${this.user.token_type} ${this.user.access_token}`;
-   return `${this.token} ${this.access_token}`;
+    return `${this.token} ${this.access_token}`;
   }
 
   logout() {
