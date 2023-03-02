@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../account.service';
+import { AcntService } from '../acnt.service';
 
 @Component({
   selector: 'app-signin-redirect-callback',
   template: `<div></div>`
 })
 export class SigninRedirectCallbackComponent implements OnInit {
-
-  constructor(private _authService: AccountService, private _router: Router) { }
+  returnUrl: string;
+  constructor(private _router: Router, private acntService: AcntService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._authService.finishLogin()
+    this.acntService.finishLogin()
     .then(_ => {
       console.log('inside finish login');
-      this._router.navigate(['/'], { replaceUrl: true });
+
+      this._router.navigate(['/checkout'], { replaceUrl: true });
     })
   }
 }

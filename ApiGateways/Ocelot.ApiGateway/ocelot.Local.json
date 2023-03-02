@@ -135,6 +135,25 @@
         "Limit": 1
       }
     },
+    {
+      "DownstreamPathTemplate": "/api/v2/Basket/Checkout",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "9001"
+        }
+      ],
+      "UpstreamPathTemplate": "/Basket/CheckoutV2",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "3s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
     //Discount API
     {
       "DownstreamPathTemplate": "/api/v1/Discount/{productName}",

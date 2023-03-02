@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../account.service';
+import { ActivatedRoute } from '@angular/router';
+import { AcntService } from '../acnt.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,16 @@ import { AccountService } from '../account.service';
 export class LoginComponent implements OnInit {
 
   title = "Login";
-  constructor(private accountService: AccountService) { }
+  returnUrl: string;
+  constructor(private activatedRoute: ActivatedRoute, private acntService: AcntService) { }
   ngOnInit(): void {
-    this.login();
+    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/checkout';
+    // this.login();
   }
 
 
   login(){
-    this.accountService.login();
+    this.acntService.login();
   }
 
 }
