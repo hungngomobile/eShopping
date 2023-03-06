@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  registry: eshoppingacr.azurecr.io
-  repository: eshoppingacr.azurecr.io/ocelotapigw
+  registry: eshopping.azurecr.io
+  repository: eshopping.azurecr.io/ocelotapigw
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1"
@@ -39,8 +39,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: NodePort
+  port: 9010  
 
 ingress:
   enabled: false
@@ -85,4 +85,4 @@ affinity: {}
 
 env:
   - name: ASPNETCORE_ENVIRONMENT
-    value: Development            
+    value: k8s            

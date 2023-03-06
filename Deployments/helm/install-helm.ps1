@@ -6,9 +6,9 @@ function Install-Chart  {
     Param([string]$chart, [string]$initialOptions)
     $options=$initialOptions
 
-    $command = "helm install $appName-$chart $chart $options"
-    Write-Host "Helm Command: $command" -ForegroundColor Gray
-    Invoke-Expression $command
+    $cmd = "helm install $appName-$chart $chart $options"
+    Write-Host "Helm Command: $cmd" -ForegroundColor Gray
+    Invoke-Expression $cmd
 }
 
 

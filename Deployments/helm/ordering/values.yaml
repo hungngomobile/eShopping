@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  registry: eshoppingacr.azurecr.io
-  repository: eshoppingacr.azurecr.io/orderingapi
+  registry: eshopping.azurecr.io
+  repository: eshopping.azurecr.io/orderingapi
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1"

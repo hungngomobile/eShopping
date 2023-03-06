@@ -122,6 +122,9 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:9010"
+    "ServiceDiscoveryProvider": {
+      "Namespace": "default",
+      "Type": "KubernetesServiceDiscoveryProvider"
+    }
   }
 }

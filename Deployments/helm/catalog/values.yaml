@@ -3,10 +3,11 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+pathBase: /Catalog
 
 image:
-  registry: eshoppingacr.azurecr.io
-  repository: eshoppingacr.azurecr.io/catalogapi
+  registry: eshopping.azurecr.io
+  repository: eshopping.azurecr.io/catalogapi
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v1"
