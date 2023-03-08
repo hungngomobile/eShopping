@@ -34,7 +34,7 @@ Below, I have Pasted the high level glimpse project structure.
 
 Client Structure goes like
 
-![image](https://user-images.githubusercontent.com/3886381/214280752-a580106c-0dcc-4a3b-8aa2-ef12deab8a53.png)
+![image](https://user-images.githubusercontent.com/3886381/223711577-17c37c86-35b4-424c-8c27-79f40317ac77.png)
 
 ## Deployments
 
