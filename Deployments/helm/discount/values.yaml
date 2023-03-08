@@ -25,7 +25,6 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-# TODO: Remove this, once GRPC issue resolved
 podAnnotations:
   sidecar.istio.io/inject: "false"
 
