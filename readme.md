@@ -3,7 +3,24 @@
 
 Hi Friends,
 
-This is an ecommerce app using clean architecture and tons of others server side and client side technologies.
+Microservices are a design pattern in which applications are composed of independent modules that communicate with each other within well defined boundaries. This makes it easier to develop, test, and deploy isolated parts of your application.
+
+In this particular section, you will be learning plethora of technologies coming together for the common purpose. In the first segment, you will be building Microservices module using clean architecture. You will also be implementing CQRS design pattern in order to implement the clean architecture design. Here, you will learn how to apply all the industry best practices together. This series is designed using .Net Core 6 and Angular 15.
+
+This course is part of Microservices series where in you will learn all minute details related to Microservices. During this learning path, you will learn how to connect the dots using different technologies and tooling. This course "Getting Started with Microservices using Clean Architecture" is the first part of the series.
+
+Other parts include
+
+2. Securing Microservices using Identity Server 4
+
+3. Implementing Cross Cutting Concerns
+
+4. Versioning Microservices
+
+5. Building Angular Application for MicroServices
+
+6. Deploying Microservices to Kubernetes and AKS
+
 
 ## Introduction
 In this section, you will learn how to build full fledged Ecommerce app using asp.net core, docker, kubernetes, helm charts, service mesh and angular 15. Below are the key takeaways from this project. Anyone who wants to learn and write professional enterpise projects can refer this project. This project not only illustrates how to implement all layers to the point rather it adheres to best practices as followed by industry.
@@ -38,7 +55,7 @@ Client Structure goes like
 
 ## Deployments
 
-![image](https://user-images.githubusercontent.com/3886381/214281990-d16b4dea-635c-4a7e-9929-191767ce297d.png)
+![image](https://user-images.githubusercontent.com/3886381/223712628-2abbd0f1-ec32-4158-a9b2-842aed0f1096.png)
 
 ## Warning and Disclaimer
 
