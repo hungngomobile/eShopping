@@ -85,11 +85,13 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 * In the above diagram as we can see before checkout event created basket gets deleted from Redis database.
 
-![image](https://user-images.githubusercontent.com/3886381/208604620-9ca24002-e961-4bff-9779-fbc7c40a3e4c.png)
+### Container Management via Portainer
+
+![image](https://user-images.githubusercontent.com/3886381/223689199-c4f08b11-cee9-490d-afd5-dd58f437cc0b.png)
 
 
 ## Elastic Search
-![image](https://user-images.githubusercontent.com/3886381/208603245-44687ec3-629c-4a1d-a7f4-87bcc5baa1f6.png)
+![image](https://user-images.githubusercontent.com/3886381/223689686-55b3200b-8391-409f-ad23-bf329d8284de.png)
 
 
 ## AKS Workloads
