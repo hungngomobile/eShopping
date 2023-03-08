@@ -93,52 +93,44 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ## Elastic Search
 ![image](https://user-images.githubusercontent.com/3886381/223689686-55b3200b-8391-409f-ad23-bf329d8284de.png)
 
+## ACR Workloads
+
+![image](https://user-images.githubusercontent.com/3886381/223693223-a2add640-519b-45cf-b502-74b5564a2999.png)
 
 ## AKS Workloads
 
-![image](https://user-images.githubusercontent.com/3886381/210868687-3ce72999-1187-4826-94f3-14db9d79bde5.png)
-
-## AKS Monitoring
-![image](https://user-images.githubusercontent.com/3886381/210528612-9b8a8211-abc8-4a86-806a-c94d3f0dfb96.png)
+![image](https://user-images.githubusercontent.com/3886381/223701468-79b636dc-3448-4506-9a9a-6f115d42d93c.png)
 
 ## Pods Overview Kube Lens
-![image](https://user-images.githubusercontent.com/3886381/210942031-14a2b935-a7f2-48f1-b97d-affe199030fe.png)
-
-![image](https://user-images.githubusercontent.com/3886381/210942401-39084590-7670-4067-956b-772c28f2f508.png)
+![image](https://user-images.githubusercontent.com/3886381/223701662-e209e345-785c-414c-841e-fe0e076160ec.png)
 
 ## Deployments
 
-![image](https://user-images.githubusercontent.com/3886381/210942812-fe244069-5aba-4b48-9c68-9b503b540854.png)
+![image](https://user-images.githubusercontent.com/3886381/223701850-c4bdfc70-3070-4322-bc35-852eb15ab815.png)
+
+## Replicasets
+
+![image](https://user-images.githubusercontent.com/3886381/223702827-788839c9-a60d-4f9f-80d6-c9c0eb613e84.png)
 
 ## ConfigMaps
 
-![image](https://user-images.githubusercontent.com/3886381/210943017-97b65ee3-5b70-4d5f-972c-5b75ff92ba7b.png)
+![image](https://user-images.githubusercontent.com/3886381/223702048-8e792bf7-205e-4a2a-b4e8-30ff9c60604c.png)
 
 ## Secrets
 
-![image](https://user-images.githubusercontent.com/3886381/210944092-68c586ff-528e-48f6-81f5-df07fc2bf2d1.png)
+![image](https://user-images.githubusercontent.com/3886381/223702144-294ef5ce-f129-4d26-9fcb-5d909cb936d5.png)
 
 ## HPA (Horizontal Pods AutoScaler)
 
-![image](https://user-images.githubusercontent.com/3886381/210944313-4f33e12d-dcf2-475c-9bc6-9abb4f56f4a7.png)
+![image](https://user-images.githubusercontent.com/3886381/223702329-520c6fdf-9d51-4994-8f8c-cae6c12883c3.png)
 
-## Kibana
+## Istio enabled
 
-kubectl port-forward service/kibana 5602:5601
+kubectl apply -f istio-init.yaml
+kubectl apply -f istio-minikube.yaml
+kubectl apply -f kiali-secret.yaml
 
-![image](https://user-images.githubusercontent.com/3886381/210946644-63d6ade6-71f0-458e-a823-632619ba6c11.png)
-
-## Istio
-
-After Installing Istioctl and Addons its pods will look like 
-### kubectl get pod -n istio-system
-
-![image](https://user-images.githubusercontent.com/3886381/211144670-d76a2c50-effe-4686-97f0-e28fe8a807fb.png)
-
-And its services will look like this
-### kubectl get svc -n istio-system
-
-![image](https://user-images.githubusercontent.com/3886381/211144715-4f24b04f-77e7-4506-bcef-155b91d7fbc0.png)
+![image](https://user-images.githubusercontent.com/3886381/223704261-9ce0ecab-9866-4633-b71b-7947b38fce76.png)
 
 ### Istio via Kubelens
 
@@ -146,21 +138,20 @@ And its services will look like this
 
 ## Kiali (Service Mesh Management for Istio)
 
-In order to access the same, we need to port forward the kiali like 
-### kubectl port-forward svc/kiali -n istio-system 20002:20001
+We can port forward for the same using lens
 
 This will bring Kiali UI like 
 
-![image](https://user-images.githubusercontent.com/3886381/211145703-1c96806f-c9b6-41a4-8aaa-64ce47784590.png)
+![image](https://user-images.githubusercontent.com/3886381/223704652-66f033c3-c37d-4af0-987b-afe822b060a1.png)
 
-## Kiali Workloads
+## Kiali catalog Workload
 
-![image](https://user-images.githubusercontent.com/3886381/211145786-802b6080-227c-49b8-b7b1-6c9d271095c3.png)
+![image](https://user-images.githubusercontent.com/3886381/223704911-47535b5b-4f0f-4560-843c-6ba4ed6d5cc8.png)
 
-## Kiali Workload Overview
+## Kiali Service Overview
 
-![image](https://user-images.githubusercontent.com/3886381/211146477-5071ca5f-30a0-47a3-bebb-bc9a3db3881c.png)
+![image](https://user-images.githubusercontent.com/3886381/223705013-5feca99f-d5a5-4969-8c02-89b283171d75.png)
 
 ## Graphana Visualization
 
-![image](https://user-images.githubusercontent.com/3886381/211147911-88fd9853-cf3b-48d9-82e5-453ec0ab7fb2.png)
+![image](https://user-images.githubusercontent.com/3886381/223705814-8da56911-ee72-46be-b90a-19f1491260fe.png)
